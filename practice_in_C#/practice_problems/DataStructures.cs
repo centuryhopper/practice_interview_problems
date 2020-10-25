@@ -8,11 +8,12 @@ namespace data_structures
         /// <summary>
         // -array implementation with a predetermined size
         // -min heap by default
-        // -we can only access the first element of the heap
-        // -we can only insert after the last index of the heap
+        // -you can only access the first element of the heap
+        // -you can only insert after the last index of the heap
+        // -you must assign a delegate compare member of the object upon instantiating
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public class PriorityQueue<T> where T : IComparable<T>
+        public class PriorityQueue<T>
         {
             private T[] ar;
 
@@ -29,12 +30,11 @@ namespace data_structures
             public int size { get; private set; }
             public readonly bool isMaxHeap;
 
-
             /// <summary>
             /// comparison member is
             /// overwriteable if needed
             /// </summary>
-            public Comparison<T> compare;
+            public Comparison<T> compare = null;
 
             /// <summary>
             /// default capacity of 16
@@ -44,7 +44,6 @@ namespace data_structures
                 arrayCapacity = 16;
                 size = 0;
                 ar = new T[arrayCapacity];
-                compare = (a, b) => a.CompareTo(b);
             }
 
             // call the first constructor to create the list
@@ -70,7 +69,6 @@ namespace data_structures
                 this.arrayCapacity = capacity;
                 this.size = 0;
                 this.isMaxHeap = isMaxHeap;
-                compare = (a, b) => a.CompareTo(b);
             }
 
             // call the above constructor to default the bool to false
@@ -123,10 +121,10 @@ namespace data_structures
 
                     if (isMaxHeap)
                     {
-                        return a.CompareTo(b) > 0 ? lc : rc;
+                        return compare(a, b) > 0 ? lc : rc;
                     }
 
-                    return a.CompareTo(b) < 0 ? lc : rc;
+                    return compare(a, b) < 0 ? lc : rc;
                 }
 
                 private void swap(int i, int j)
@@ -156,6 +154,10 @@ namespace data_structures
                 }
             }
 
+            /// <summary>
+            /// takes in the index of the first element in the heap
+            /// </summary>
+            /// <param name="parentInd"></param>
             private void PercolateDown(int parentInd)
             {
                 int childInd = GetIndexOfChild(parentInd);
@@ -173,6 +175,7 @@ namespace data_structures
 
             public void Enqueue(T item)
             {
+                if (this.compare == null) { throw new InvalidOperationException("please assign the object's \"compare\" member to a delegate"); }
                 if (isFull()) { throw new InvalidOperationException("Queue is full"); }
                 ar[size++] = item;
 
@@ -187,6 +190,7 @@ namespace data_structures
             /// <returns></returns>
             public T Dequeue()
             {
+                if (this.compare == null) { throw new InvalidOperationException("please assign the object's \"compare\" member to a delegate"); }
                 T retVal = Peek();
 
                 // dont percolate down if we just removed the last element in the heap
@@ -209,11 +213,18 @@ namespace data_structures
             }
 
             private void print(T msg) => System.Console.WriteLine(msg);
-
-
         }
     }
 }
 
 
 
+
+
+// private struct ComparePts : IComparer<int[]>
+//     {
+//         // returns -1 if pt1 < pt2
+//         // returns 0 if pt1 == pt2
+//         // returns 1 if pt1 > pt2
+//         public int Compare(int[] pt1, int[] pt2) => (pt1[0] * pt1[0] + pt1[1] * pt1[1]) - (pt2[0] * pt2[0] + pt2[1] * pt2[1]);
+//     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.IO;
+using System.Text.RegularExpressions;
+using System;
 using GraphTraversals;
 using sorting_algos;
 using data_structures;
@@ -7,6 +9,8 @@ namespace practice_problems
 {
     // type-aliasing for simplified typing
     using PriorityQueue = DataStructures.PriorityQueue<int>;
+    using PQtup = DataStructures.PriorityQueue<(int[] point, int distance)>;
+
     class Program
     {
         static void p(object msg = null) => System.Console.WriteLine(msg);
@@ -20,35 +24,88 @@ namespace practice_problems
             // int[] array = new int[] { 5, 4, 3, 2, 1, 0 };
             // SortingAlgos s = new SortingAlgos();
             // s.MergeSort(array);
-
             // s.PrintArray(array);
 
-            PriorityQueue pq = new PriorityQueue(true);
-
-            for (int i = 1; i <= 10; i++)
+            int[][] points = new int[][]
             {
-                pq.Enqueue(i);
+                new int[]{3,3},
+                new int[]{5,-1},
+                new int[]{-2, 4}
+            };
+            int k = 2;
+
+            // [[3,3],[5,-1],[-2,4]]
+            // 2
+
+
+            // maxheap
+            var pQ = new PQtup(points.Length, true);
+
+            // overwrite the default compare delegate
+            pQ.compare = (a, b) => a.distance.CompareTo(b.distance);
+
+
+            #region point comparisons
+
+            foreach (int[] pt in points)
+            {
+                // we avoid sqrt call to save runtime
+                int distance = pt[0] * pt[0] + pt[1] * pt[1];
+                // p(distance);
+                pQ.Enqueue((pt, distance));
+
+                if (pQ.size > k)
+                {
+                    // remove the largest element
+                    pQ.Dequeue();
+                }
+            }
+            p("");
+
+            int[][] res = new int[k][];
+
+            while (k-- > 0)
+            {
+                res[k] = pQ.Dequeue().point;
             }
 
-            p("size: " + pq.size);
+            foreach (var item in res)
+            {
+                Array.ForEach<int>(item, System.Console.WriteLine);
+            }
 
-            p("");
-            pq.Enqueue(0);
-            pq.PrintQueue();
-            p("size: " + pq.size);
-            p("");
+            #endregion
 
-            p("");
-            pq.Dequeue();
-            pq.PrintQueue();
-            p("size: " + pq.size);
-            p("");
 
-            p("");
+
+
+
+            #region integers
+            // PriorityQueue pq = new PriorityQueue(true);
+            // for (int i = 1; i <= 10; i++)
+            // {
+            //     pq.Enqueue(i);
+            // }
+
+            // p("size: " + pq.size);
+
+            // p("");
+            // pq.Enqueue(0);
+            // pq.PrintQueue();
+            // p("size: " + pq.size);
+            // p("");
+
+            // p("");
             // pq.Dequeue();
             // pq.PrintQueue();
             // p("size: " + pq.size);
-            p("");
+            // p("");
+
+            // p("");
+            // // pq.Dequeue();
+            // // pq.PrintQueue();
+            // // p("size: " + pq.size);
+            // p("");
 
             // for (int i = 0; i < 9; i++)
             // {
@@ -56,6 +113,8 @@ namespace practice_problems
             //     pq.PrintQueue();
             //     p("size: " + pq.size);
             // }
+            #endregion
+
         }
     }
 }
