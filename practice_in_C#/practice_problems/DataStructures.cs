@@ -29,6 +29,13 @@ namespace data_structures
             public int size { get; private set; }
             public readonly bool isMaxHeap;
 
+
+            /// <summary>
+            /// comparison member is
+            /// overwriteable if needed
+            /// </summary>
+            public Comparison<T> compare;
+
             /// <summary>
             /// default capacity of 16
             /// </summary>
@@ -37,6 +44,7 @@ namespace data_structures
                 arrayCapacity = 16;
                 size = 0;
                 ar = new T[arrayCapacity];
+                compare = (a, b) => a.CompareTo(b);
             }
 
             // call the first constructor to create the list
@@ -62,6 +70,7 @@ namespace data_structures
                 this.arrayCapacity = capacity;
                 this.size = 0;
                 this.isMaxHeap = isMaxHeap;
+                compare = (a, b) => a.CompareTo(b);
             }
 
             // call the above constructor to default the bool to false
@@ -69,6 +78,15 @@ namespace data_structures
 
             // default the bool to false by calling the constructor above
             public PriorityQueue(IEnumerable<T> collection) : this(collection, false) { }
+
+            public PriorityQueue(int capacity, bool isMaxHeap, Comparison<T> compare)
+            {
+                this.size = 0;
+                this.arrayCapacity = capacity;
+                ar = new T[arrayCapacity];
+                this.isMaxHeap = isMaxHeap;
+                this.compare = compare;
+            }
 
             public T Peek()
             {
@@ -89,17 +107,24 @@ namespace data_structures
                 private int GetRightChildIndex(int parent) => 2 * parent + 2;
 
                 /// <summary>
-                // Return the index of whichever child of node 'parent' has the smallest
+                // Return the index of whichever child of node 'parent' has the smallest or largest
                 // value. If the node at index 'parent' has no children, return parent.
                 /// </summary>
                 /// <param name="parent"></param>
                 /// <returns></returns>
-                private int GetIndexOfSmallerChild(int parent)
+                private int GetIndexOfChild(int parent)
                 {
+                    // makes sure that we have children, otherwise set parent index to left or
+                    // right child index
                     int lc = GetLeftChildIndex(parent) >= this.size ? parent : GetLeftChildIndex(parent);
                     int rc = GetRightChildIndex(parent) >= this.size ? parent : GetRightChildIndex(parent);
 
                     T a = ar[lc], b = ar[rc];
+
+                    if (isMaxHeap)
+                    {
+                        return a.CompareTo(b) > 0 ? lc : rc;
+                    }
 
                     return a.CompareTo(b) < 0 ? lc : rc;
                 }
@@ -110,6 +135,7 @@ namespace data_structures
                 }
             #endregion
 
+
             /// <summary>
             /// takes in the index of the element that was last inserted
             /// at the end of the heap
@@ -119,9 +145,8 @@ namespace data_structures
             {
                 int parentIndex = GetParentIndex(childInd);
 
-                // minheap for now
                 int switcheroo = isMaxHeap ? -1 : 1;
-                while (switcheroo * ar[childInd].CompareTo(ar[parentIndex]) < 0)
+                while (switcheroo * compare (ar[childInd], ar[parentIndex]) < 0)
                 {
                     swap(childInd, parentIndex);
 
@@ -133,17 +158,16 @@ namespace data_structures
 
             private void PercolateDown(int parentInd)
             {
-                int childInd = GetIndexOfSmallerChild(parentInd);
+                int childInd = GetIndexOfChild(parentInd);
 
-                // // minheap only
                 int switcheroo = isMaxHeap ? -1 : 1;
-                while (switcheroo * ar[parentInd].CompareTo(ar[childInd]) > 0)
+                while (switcheroo * compare(ar[parentInd], ar[childInd]) > 0)
                 {
                     swap(parentInd, childInd);
 
                     // adjust indices
                     parentInd = childInd;
-                    childInd = GetIndexOfSmallerChild(parentInd);
+                    childInd = GetIndexOfChild(parentInd);
                 }
             }
 

@@ -23,7 +23,7 @@ namespace practice_problems
 
             // s.PrintArray(array);
 
-            PriorityQueue pq = new PriorityQueue(false);
+            PriorityQueue pq = new PriorityQueue(true);
 
             for (int i = 1; i <= 10; i++)
             {
@@ -34,14 +34,8 @@ namespace practice_problems
 
             p("");
             pq.Enqueue(0);
-            // pq.PrintQueue();
-            // p("size: " + pq.size);
-            p("");
-
-            p("");
-            pq.Dequeue();
-            // pq.PrintQueue();
-            // p("size: " + pq.size);
+            pq.PrintQueue();
+            p("size: " + pq.size);
             p("");
 
             p("");
@@ -50,12 +44,18 @@ namespace practice_problems
             p("size: " + pq.size);
             p("");
 
-            for (int i = 0; i < 9; i++)
-            {
-                pq.Dequeue();
-                pq.PrintQueue();
-                p("size: " + pq.size);
-            }
+            p("");
+            // pq.Dequeue();
+            // pq.PrintQueue();
+            // p("size: " + pq.size);
+            p("");
+
+            // for (int i = 0; i < 9; i++)
+            // {
+            //     pq.Dequeue();
+            //     pq.PrintQueue();
+            //     p("size: " + pq.size);
+            // }
         }
     }
 }
