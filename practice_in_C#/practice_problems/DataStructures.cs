@@ -88,7 +88,7 @@ namespace data_structures
 
             public T Peek()
             {
-                if (IsEmpty())
+                if (IsEmpty)
                 {
                     throw new InvalidOperationException("queue is empty");
                 }
@@ -96,8 +96,8 @@ namespace data_structures
                 return ar[0];
             }
 
-            public bool IsEmpty() => arrayCapacity == 0;
-            public bool isFull() => size == arrayCapacity;
+            public bool IsEmpty => size == 0;
+            public bool isFull => size == arrayCapacity;
 
             #region For percolating operations
                 private int GetParentIndex(int child) => (child - 1) / 2;
@@ -176,7 +176,7 @@ namespace data_structures
             public void Enqueue(T item)
             {
                 if (this.compare == null) { throw new InvalidOperationException("please assign the object's \"compare\" member to a delegate"); }
-                if (isFull()) { throw new InvalidOperationException("Queue is full"); }
+                if (isFull) { throw new InvalidOperationException("Queue is full"); }
                 ar[size++] = item;
 
                 // percolate up if necessary
@@ -212,7 +212,7 @@ namespace data_structures
                 }
             }
 
-            private void print(T msg) => System.Console.WriteLine(msg);
+            private void print(T m) => Console.WriteLine(m);
         }
     }
 }

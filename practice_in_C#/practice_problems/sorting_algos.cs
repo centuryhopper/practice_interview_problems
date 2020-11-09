@@ -3,9 +3,9 @@ using System;
 
 namespace sorting_algos
 {
-    public struct SortingAlgos
+    public static class SortingAlgos
     {
-        public void PrintArray(int[] array)
+        public static void PrintArray(int[] array)
         {
             if (array.Length == 0)
             {
@@ -16,13 +16,18 @@ namespace sorting_algos
             Array.ForEach(array, elem => System.Console.WriteLine(elem));
         }
 
+        private static void Swap(int[] ar, int a, int b)
+        {
+            int tmp = ar[a]; ar[a] = ar[b]; ar[b] = tmp;
+        }
+
         #region MERGE SORT
-        public void MergeSort(int[] array)
+        public static void MergeSort(int[] array)
         {
             MergeSort(array, 0, array.Length - 1);
         }
 
-        private void MergeSort(int[] array, int lo, int hi)
+        private static void MergeSort(int[] array, int lo, int hi)
         {
             // base case
             if (lo >= hi)
@@ -51,7 +56,7 @@ namespace sorting_algos
         /// <param name="lo">lower bound index</param>
         /// <param name="mid">mid index</param>
         /// <param name="hi">upper bound index</param>
-        private void MergeyMerge(int[] array, int lo, int mid, int hi)
+        private static void MergeyMerge(int[] array, int lo, int mid, int hi)
         {
             // hi - lo + 1 because arrays have zero-based indexing
             int[] aux = new int[hi - lo + 1];
@@ -98,7 +103,40 @@ namespace sorting_algos
         }
         #endregion
 
+        #region BUBBLE SORT
 
+        public static void OptimizedBubbleSort(int[] ar)
+        {
+            bool didSwap = false;
+            int n = ar.Length;
+
+            // stop before the last element because if
+            // we stopped at the last element, our
+            // algorithm will check the non-existing
+            // next element after and we'll get
+            // an array index outta bounds exception
+            for (int i = 0; i < n - 1; ++i)
+            {
+                // bubble sort needs to swap on every iteration
+                didSwap = false;
+
+                // (ar.Length - 1) - i because we need to shrink our
+                // upper bound for every number we pass
+                for (int j = 0; j < (n - 1) - i; ++j)
+                {
+                    if (ar[j] > ar[j+1])
+                    {
+                        Swap(ar, j, j+1);
+                        didSwap = true;
+                    }
+                }
+
+                // leave the algorithm early if no swapping at all occurred
+                if (!didSwap) { break; }
+            }
+        }
+
+        #endregion
 
     }
 }

@@ -59,12 +59,44 @@ int	main(int argc, char **argv)
 
 
     // unique_ptr<int[]> intAr = make_unique<int[]>(5);
-    unique_ptr<int[]> intAr(new int[5]);
+    // unique_ptr<int[]> intAr(new int[5]);
 
-    int i;
-    fl(i, 0, 5)
+    // int i;
+    // fl(i, 0, 5)
+    // {
+    //     print(intAr[i]);
+    // }
+
+    // int i = 4;
+    // int j = i++; // i = 5, j = 4
+    // int k = ++j; // j = 5, k = 5
+    // std::cout << i << j << k << std::endl;
+    // int a, b;
+
+    // cin >> a >> b;
+    // print(a);
+    // print(b);
+
+    // int n = 5; void* p = &n;
+    // int *pi = static_cast<int*>(p);
+    // ++*pi;
+    // print(*pi);
+
+    int arr[] = {1, 2, 3, 4};
+    int* p = arr;
+    int* k = p;
+    // std::cout << (*(k + 2) + 1[p] + *(0 + arr)) << std::endl;
+    std::cout << 1[p] << " " << p[1] << std::endl;
+
+    int8_t a = 200;
+    uint8_t b = 100;
+    if (a > b)
     {
-        print(intAr[i]);
+        print("a");
+    }
+    else
+    {
+        print("b");
     }
 
 
