@@ -6,7 +6,7 @@ using System.IO;
 
 namespace PathFinding
 {
-    using PriorityQueue = DataStructures.PriorityQueue<Vertex>;
+    using PriorityQueue = PriorityQueue<Vertex>;
 
     public struct Vertex
     {
@@ -50,10 +50,10 @@ namespace PathFinding
                 string[] vertices = line.Split(' ');
                 for (int j = 0; j < n; j++)
                 {
-                    string spaceOrEmpty = j == vertices.Length - 1 ? String.Empty : " ";
+                    // string spaceOrEmpty = j == vertices.Length - 1 ? String.Empty : " ";
                     // Console.Write(vertices[j] + spaceOrEmpty);
                     matrix[i, j] = Convert.ToInt32(vertices[j]);
-                    Console.Write(matrix[i, j] + spaceOrEmpty);
+                    // Console.Write(matrix[i, j] + spaceOrEmpty);
                 }
                 p("");
             }
@@ -133,18 +133,9 @@ namespace PathFinding
 
                         dist[i] = dist[v.id] + matrix[v.id, i];
                         minheap.Enqueue(new Vertex(i, dist[i]));
-
-                        // values that got changed on A
-                        // p((char)(i + 'A'));
                     }
                 }
-                // if (v.id == 0) break;
             }
-
-            // foreach (var item in dist)
-            // {
-            //     p(item);
-            // }
 
             if (numVisited != n)
                 p("Oh no! You fed a disconnected graph to Dijkstra!");

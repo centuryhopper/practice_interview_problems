@@ -7,21 +7,20 @@ using sorting_algos;
 using data_structures;
 using PathFinding;
 
-
 namespace practice_problems
 {
     // type-aliasing for simplified typing
-    using PriorityQueue = DataStructures.PriorityQueue<int>;
-    using PQtup = DataStructures.PriorityQueue<(int[] point, int distance)>;
+    using PriorityQueue = PriorityQueue<int>;
+    using PQtup = PriorityQueue<(int[] point, int distance)>;
 
     class Program
     {
         static void p(object msg = null) => System.Console.WriteLine(msg);
 
-
         static void Main(string[] args)
         {
             p("");
+
             // Graph g = new Graph("graph.txt");
             // g.dfs(0);
             // g.bfs(0);
@@ -46,9 +45,15 @@ namespace practice_problems
 
             // this object assumes the first line in the text file
             // is a single integer that represents the total number of vertices
-            DijkstraAlgo d = new DijkstraAlgo("dijkstra-graph.txt");
+            // DijkstraAlgo d = new DijkstraAlgo("dijkstra-graph.txt");
+            // d.RunDijkstra(0);
 
-            d.RunDijkstra(0);
+            Trie t = new Trie();
+
+            t.InsertWord("abc");
+            p(t.Contains("abc"));
+            t.InsertWord("abcd");
+            p(t.Contains("abc"));
 
             p("");
             // Stopwatch timer = new Stopwatch();
