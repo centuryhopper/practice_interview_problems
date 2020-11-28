@@ -49,6 +49,52 @@ namespace Game.Utils
             return (max, idx);
         }
 
+        public class ArrayShuffleAndReset
+        {
+            private int[] a, b;
+            private Random r;
+
+            private void swap(int[] ar, int i, int j)
+            {
+                if (i == j) { return; }
+
+                int tmp = ar[i]; ar[i] = ar[j]; ar[j] = tmp;
+            }
+
+            public ArrayShuffleAndReset(int[] nums)
+            {
+                a = new int[nums.Length];
+                r = new Random();
+
+                // this makes a point to its own array rather than keep a
+                // reference to nums,
+                // which would look like a = nums;
+                nums.CopyTo(a, 0);
+                b = nums;
+            }
+
+            /** Resets the array to its original configuration and return it. */
+            public int[] Reset()
+            {
+                return b;
+            }
+
+            /** Returns a random shuffling of the array. */
+
+
+            // fisher-yates algorithm
+            public int[] Shuffle()
+            {
+                for (int i = a.Length - 1; i >= 0; --i)
+                {
+                    int next = r.Next(i + 1);
+                    swap(a, i, next);
+                }
+
+                return a;
+            }
+        }
+
 
         static void print(object msg) => Console.WriteLine(msg);
     }

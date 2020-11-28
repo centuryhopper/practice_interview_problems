@@ -84,6 +84,10 @@ namespace data_structures
             this.compare = compare;
         }
 
+        /// <summary>
+        /// Looks at but doesn't take off the top element of the queue
+        /// </summary>
+        /// <returns>The top element value of the queue</returns>
         public T Peek()
         {
             if (IsEmpty)

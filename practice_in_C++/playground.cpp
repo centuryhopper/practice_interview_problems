@@ -8,7 +8,7 @@
 #include <iterator>
 #include <functional>
 #include <memory>
-#define print(x) std::cout << x << std::endl;
+#define p(x) std::cout << x << std::endl;
 #define null NULL
 #define fl(i, k, n) for (int i = k; i < n; ++i)
 using namespace std;
@@ -56,6 +56,24 @@ int	main(int argc, char **argv)
     // ForEach<std::string>(b, [](std::string elem) { print(elem); });
 
     std::cout << std::boolalpha << std::endl;
+    auto pr = [](int x) { p(x) };
+
+    int size = 2;
+    // unique_ptr<int[]> ar (new int[size] {100, 1});
+
+    // p("ar length : " + to_string(sizeof(ar) / sizeof(int)));
+
+    // for (int i = 0; i < size; i++)
+    // {
+    //     p(ar[i]);
+    // }
+    unique_ptr<vector<int> > vp (new vector<int>);
+
+    for (int i = 1; i <= 100; ++i) vp->emplace_back(i);
+
+    for_each(vp->begin(), vp->end(), pr);
+
+
 
 
     // unique_ptr<int[]> intAr = make_unique<int[]>(5);
@@ -82,22 +100,22 @@ int	main(int argc, char **argv)
     // ++*pi;
     // print(*pi);
 
-    int arr[] = {1, 2, 3, 4};
-    int* p = arr;
-    int* k = p;
-    // std::cout << (*(k + 2) + 1[p] + *(0 + arr)) << std::endl;
-    std::cout << 1[p] << " " << p[1] << std::endl;
+    // int arr[] = {1, 2, 3, 4};
+    // int* p = arr;
+    // int* k = p;
+    // // std::cout << (*(k + 2) + 1[p] + *(0 + arr)) << std::endl;
+    // std::cout << 1[p] << " " << p[1] << std::endl;
 
-    int8_t a = 200;
-    uint8_t b = 100;
-    if (a > b)
-    {
-        print("a");
-    }
-    else
-    {
-        print("b");
-    }
+    // int8_t a = 200;
+    // uint8_t b = 100;
+    // if (a > b)
+    // {
+    //     print("a");
+    // }
+    // else
+    // {
+    //     print("b");
+    // }
 
 
 

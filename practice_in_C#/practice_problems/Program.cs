@@ -50,10 +50,13 @@ namespace practice_problems
 
             Trie t = new Trie();
 
-            t.InsertWord("abc");
-            p(t.Contains("abc"));
+            // t.InsertWord("abc");
+            // p(t.Contains("abc"));
             t.InsertWord("abcd");
-            p(t.Contains("abc"));
+            p(t.Contains("abcd"));
+
+            p(t.DeleteWord("abcd"));
+            p(t.Contains("abcd"));
 
             p("");
             // Stopwatch timer = new Stopwatch();

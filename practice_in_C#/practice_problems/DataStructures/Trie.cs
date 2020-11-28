@@ -146,17 +146,70 @@ namespace data_structures
             return true;
         }
 
+
         /// <summary>
         /// Removes the input word from the trie data structure,
-        /// if it exists.
+        /// if it exists. Note that you cannot delete prefixes; you can only
+        /// delete whole words
+        /// The word could be logically deleted or physically deleted depending on
+        /// the structure of the trie (for example deleting "abc" from a trie that has
+        /// "abc" and "abcd" will only logically delete it because "abcd" contains "abc").
+        /// recursive implementation (quicker and more memory efficient than stack)
+        /// nodes with empty dict can be safely deleted, otherwise mark the flag as false
         /// Time complexity: O(l), where l is the length of the string
         /// </summary>
         /// <param name="word">The word to remove</param>
-        public void DeleteWord(string word)
+        /// <returns>Whether or not the word was physically deleted</returns>
+        public bool DeleteWord(string word)
         {
+            // base case
+            if (word.Length == 0) { return true; }
 
+            return DeleteWord(root, word, 0);
         }
 
+        /// <summary>
+        /// runner/implementation method for deletion
+        /// </summary>
+        /// <param name="root">root of the trie data structure</param>
+        /// <param name="word">the word to be removed</param>
+        /// <param name="index">the start of the word</param>
+        /// <returns>Whether or not the word was physically deleted.</returns>
+        private bool DeleteWord(TrieNode root, string word, int index)
+        {
+            if (index == word.Length)
+            {
+                // check endofword flag to see if word exists
+                if (!root.isEndOfWord) { return false; }
+
+                // mark as false because we're removing the word
+                root.isEndOfWord = false;
+
+                return root.children.Count == 0;
+            }
+
+            // check to see if each character is in the dictionary
+            char ch = word[index];
+
+            TrieNode tmp = null;
+
+            // does the character exist
+            if (!root.children.TryGetValue(ch, out tmp)) { return false; }
+
+            // tells whether or not to delete the current node
+            // depending on whether or not its child node's dictionary is empty
+            bool shouldDeleteCurrentNode = DeleteWord(tmp, word, index + 1);
+
+            if (shouldDeleteCurrentNode)
+            {
+                // remove the current char from the dictionary
+                root.children.Remove(ch);
+
+                return root.children.Count == 0;
+            }
+
+            return false;
+        }
     }
 }
 
