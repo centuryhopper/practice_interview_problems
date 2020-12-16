@@ -1,6 +1,6 @@
 using System;
 
-namespace Game.Utils
+namespace Utils
 {
     public static class Utils
     {
@@ -13,13 +13,15 @@ namespace Game.Utils
         /// <param name="startingIndex"></param>
         /// <param name="endingIndex"></param>
         /// <returns></returns>
-        public static int[] SubArray(int[] data, int startingIndex, int endingIndex)
+        public static T[] SubArray<T>(this T[] data, int startingIndex, int? endingIndex = null)
         {
-            if (startingIndex >= endingIndex) { return Array.Empty<int>(); }
+            if (endingIndex == null) { endingIndex = data.Length; }
+            if (startingIndex < 0 || endingIndex <= 0) { return Array.Empty<T>(); }
+            if (startingIndex >= endingIndex) { return Array.Empty<T>(); }
 
             // length of new array
-            int length = endingIndex - startingIndex;
-            int[] result = new int[length];
+            int length = endingIndex.GetValueOrDefault() - startingIndex;
+            T[] result = new T[length];
             Array.Copy(data, startingIndex, result, 0, length);
             return result;
         }

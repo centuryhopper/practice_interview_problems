@@ -1,20 +1,23 @@
 using data_structures;
 
-public class SymmetricTree
+namespace practice_problems
 {
-    private bool helper(TreeNode l, TreeNode r)
+    public class SymmetricTree
     {
-        if (l == null && r == null) { return true; }
-        if (l == null || r == null) { return false; }
-        if (l.val != r.val) { return false; }
+        private bool helper(TreeNode l, TreeNode r)
+        {
+            if (l == null && r == null) { return true; }
+            if (l == null || r == null) { return false; }
+            if (l.val != r.val) { return false; }
 
-        return helper(l.left, r.right) &&
-               helper(l.right, r.left);
-    }
+            return helper(l.left, r.right) &&
+                   helper(l.right, r.left);
+        }
 
-    // recursive method
-    public bool IsSymmetric(TreeNode root)
-    {
-        return root == null || helper(root.left, root.right);
+        // recursive method
+        public bool IsSymmetric(TreeNode root)
+        {
+            return root == null || helper(root.left, root.right);
+        }
     }
 }

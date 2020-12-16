@@ -1,31 +1,34 @@
 using data_structures;
 
-public class ValidateBinarySearchTree
+namespace practice_problems
 {
-    private bool helper(TreeNode root, long min, long max)
+    public class ValidateBinarySearchTree
     {
-        // makes sure leaf nodes return true
-        if (root == null) { return true; }
-
-        // must be within range
-        if (root.val <= min || root.val >= max)
+        private bool helper(TreeNode root, long min, long max)
         {
-            return false;
+            // makes sure leaf nodes return true
+            if (root == null) { return true; }
+
+            // must be within range
+            if (root.val <= min || root.val >= max)
+            {
+                return false;
+            }
+
+            bool flag = true;
+
+            flag &= helper(root.left, min, root.val);
+            flag &= helper(root.right, root.val, max);
+
+            return flag;
         }
 
-        bool flag = true;
+        public bool IsValidBST(TreeNode root)
+        {
+            // empty tree
+            if (root == null) { return true; }
 
-        flag &= helper(root.left, min, root.val);
-        flag &= helper(root.right, root.val, max);
-
-        return flag;
-    }
-
-    public bool IsValidBST(TreeNode root)
-    {
-        // empty tree
-        if (root == null) { return true; }
-
-        return helper(root.left, (long)int.MinValue - 1, root.val) && helper(root.right, root.val, (long)int.MaxValue + 1);
+            return helper(root.left, (long)int.MinValue - 1, root.val) && helper(root.right, root.val, (long)int.MaxValue + 1);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System;
@@ -6,12 +7,14 @@ using GraphTraversals;
 using sorting_algos;
 using data_structures;
 using PathFinding;
+using Utils;
 
 namespace practice_problems
 {
     // type-aliasing for simplified typing
     using PriorityQueue = PriorityQueue<int>;
     using PQtup = PriorityQueue<(int[] point, int distance)>;
+    using ll = SinglyLinkedList;
 
     class Program
     {
@@ -48,15 +51,36 @@ namespace practice_problems
             // DijkstraAlgo d = new DijkstraAlgo("dijkstra-graph.txt");
             // d.RunDijkstra(0);
 
-            Trie t = new Trie();
+            // Trie t = new Trie();
 
             // t.InsertWord("abc");
             // p(t.Contains("abc"));
-            t.InsertWord("abcd");
-            p(t.Contains("abcd"));
+            // t.InsertWord("abcd");
+            // p(t.Contains("abcd"));
 
-            p(t.DeleteWord("abcd"));
-            p(t.Contains("abcd"));
+            // p(t.DeleteWord("abcd"));
+            // p(t.Contains("abcd"));
+
+
+            // ll list = new ll(100);
+            // p("before");
+            // list.PrintList();
+            // for (int i = 99; i >= 1; --i)
+            // {
+            //     list.TailInsert(i);
+            // }
+            // p("after");
+            // list.PrintList();
+
+            // list.MergeSortLinkedList();
+            // p("after merge sorting the list:");
+            // list.PrintList();
+            // p(list.head.next == null ? "null" : "not null");
+
+            int[] a = {1, 2, 3, 4, 5};
+            int[] sub = a.SubArray<int>(0);
+            Array.ForEach(sub, i => System.Console.Write(i + " "));
+
 
             p("");
             // Stopwatch timer = new Stopwatch();

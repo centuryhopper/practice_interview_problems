@@ -91,8 +91,6 @@ Constraints:
             }
 
             return maxScore;
-
-
         }
     }
 }
