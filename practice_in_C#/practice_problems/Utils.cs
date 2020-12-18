@@ -5,7 +5,7 @@ namespace Utils
     public static class Utils
     {
         /// <summary>
-        /// given an int array, return a subarray of values
+        /// Given an int array, return a subarray of values
         /// starting from the given array's "startingIndex" to,
         /// but not including, the "endingIndex"
         /// </summary>

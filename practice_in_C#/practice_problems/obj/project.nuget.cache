@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "VoU/L/LshRpSb8UKoTmupjZSvHOdwYJJNzuP+CPCpNNem6L+klj8XFoQdFhMO05ETba068GAhWWQ2lK2cNhVcg==",
+  "dgSpecHash": "w8koDTwsBkX7lsMeniLtL8/9ENUX0gcpzWsnjogPRidsyBJbCKgd+xyukbLTvywMBPl6LatafR8B8H6NaksP7g==",
   "success": true,
-  "projectFilePath": "/Users/leozhang/Desktop/practice_problems for interviews/practice_in_C#/practice_problems/practice_problems.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Leo Zhang\\Documents\\GitHub\\practice_interview_problems\\practice_in_C#\\practice_problems\\practice_problems.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Leo Zhang\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Leo Zhang\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Leo Zhang\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Leo Zhang\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
+  ],
   "logs": []
 }

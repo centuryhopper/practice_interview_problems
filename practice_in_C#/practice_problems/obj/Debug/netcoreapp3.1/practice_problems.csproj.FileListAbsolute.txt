@@ -10,3 +10,16 @@
 /Users/leozhang/Desktop/practice_problems for interviews/practice_in_C#/practice_problems/obj/Debug/netcoreapp3.1/practice_problems.dll
 /Users/leozhang/Desktop/practice_problems for interviews/practice_in_C#/practice_problems/obj/Debug/netcoreapp3.1/practice_problems.pdb
 /Users/leozhang/Desktop/practice_problems for interviews/practice_in_C#/practice_problems/obj/Debug/netcoreapp3.1/practice_problems.genruntimeconfig.cache
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\bin\Debug\netcoreapp3.1\practice_problems.exe
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\bin\Debug\netcoreapp3.1\practice_problems.deps.json
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\bin\Debug\netcoreapp3.1\practice_problems.runtimeconfig.json
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\bin\Debug\netcoreapp3.1\practice_problems.runtimeconfig.dev.json
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\bin\Debug\netcoreapp3.1\practice_problems.dll
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\bin\Debug\netcoreapp3.1\practice_problems.pdb
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.csprojAssemblyReference.cache
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.AssemblyInfoInputs.cache
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.AssemblyInfo.cs
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.csproj.CoreCompileInputs.cache
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.dll
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.pdb
+C:\Users\Leo Zhang\Documents\GitHub\practice_interview_problems\practice_in_C#\practice_problems\obj\Debug\netcoreapp3.1\practice_problems.genruntimeconfig.cache
