@@ -8,6 +8,7 @@ using sorting_algos;
 using data_structures;
 using PathFinding;
 using Utils;
+using DP;
 
 namespace practice_problems
 {
@@ -23,7 +24,7 @@ namespace practice_problems
         static void Main(string[] args)
         {
             p("");
-
+            #region
             // Graph g = new Graph("graph.txt");
             // g.dfs(0);
             // g.bfs(0);
@@ -77,12 +78,12 @@ namespace practice_problems
             // list.PrintList();
             // p(list.head.next == null ? "null" : "not null");
 
-            int[] a = {1, 2, 3, 4, 5};
-            int[] sub = a.SubArray<int>(0);
-            Array.ForEach(sub, i => System.Console.Write(i + " "));
+            // int[] a = {1, 2, 3, 4, 5};
+            // int[] sub = a.SubArray<int>(0);
+            // Array.ForEach(sub, i => System.Console.Write(i + " "));
 
 
-            p("");
+            // p("");
             // Stopwatch timer = new Stopwatch();
 
             // timer.Start();
@@ -113,9 +114,7 @@ namespace practice_problems
 
             // // overwrite the default compare delegate
             // pQ.compare = (a, b) => a.distance.CompareTo(b.distance);
-
-
-
+            #endregion
 
             #region point comparisons
 
@@ -183,6 +182,31 @@ namespace practice_problems
             // }
             #endregion
 
+
+            if (args.Length < 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Error.WriteLine("Proper syntax: dotnet run <n> <k>");
+                Console.ResetColor();
+                return;
+            }
+
+            int n = Convert.ToInt32(args[0]);
+            int k = Convert.ToInt32(args[1]);
+
+            if (k > n)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Error.WriteLine("Your answer is 0 but try to mantain the first argument to be greater than or equal to the second one");
+                Console.ResetColor();
+                return;
+            }
+
+
+            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseMemo(n, k));
+            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseUltraMemo(n, k));
+            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseDP(n, k));
+            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.choose(n, k));
 
 
         }
