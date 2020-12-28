@@ -202,13 +202,10 @@ namespace practice_problems
                 return;
             }
 
-
             System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseMemo(n, k));
             System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseUltraMemo(n, k));
             System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseDP(n, k));
             System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.choose(n, k));
-
-
         }
     }
 }
