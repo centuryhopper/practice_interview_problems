@@ -1,4 +1,6 @@
 from threading import Thread
+from multiprocessing import Process
+import concurrent.futures
 from typing import Final
 import numpy as np
 import time
@@ -25,18 +27,22 @@ if __name__ == '__main__':
     primes = np.array([True] * (UPPER_BOUND + 1))
     primes[0], primes[1] = False, False
 
-    threads = np.array([])
+
+
 
     start = time.time()
 
-    for i in range(NUM_THREADS):
-        threads = np.append(threads, Thread(target=SieveEmForGood, args=(primeNums[i], UPPER_BOUND, primes)),)
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        processes = [executor.submit(SieveEmForGood, primeNums[i], UPPER_BOUND, primes) for i in range(NUM_THREADS)]
 
-    for thread in threads:
-        thread.start()
+    # for i in range(NUM_THREADS):
+    #     processes = np.append(processes, Process(target=SieveEmForGood, args=[primeNums[i], UPPER_BOUND, primes]),)
 
-    for thread in threads:
-        thread.join()
+    # for process in processes:
+    #     process.start()
+
+    # for process in processes:
+    #     process.join()
 
     end = time.time()
 
