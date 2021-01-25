@@ -25,6 +25,15 @@ namespace practice_problems
         {
             p("");
             #region
+
+            int[] a = {22, 17, 5, 2, 4, 98, 400, 20, 666, 99, 77};
+            int k = 11;
+
+            p($"{k}th largest element: " + KthLargestValue.FindKthLargest(a, k));
+
+            // Array.Sort(a);
+            // Array.ForEach(a,i => p(i));
+
             // Graph g = new Graph("graph.txt");
             // g.dfs(0);
             // g.bfs(0);
@@ -183,29 +192,29 @@ namespace practice_problems
             #endregion
 
 
-            if (args.Length < 2)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Error.WriteLine("Proper syntax: dotnet run <n> <k>");
-                Console.ResetColor();
-                return;
-            }
+            // if (args.Length < 2)
+            // {
+            //     Console.ForegroundColor = ConsoleColor.Red;
+            //     Console.Error.WriteLine("Proper syntax: dotnet run <n> <k>");
+            //     Console.ResetColor();
+            //     return;
+            // }
 
-            int n = Convert.ToInt32(args[0]);
-            int k = Convert.ToInt32(args[1]);
+            // int n = Convert.ToInt32(args[0]);
+            // int k = Convert.ToInt32(args[1]);
 
-            if (k > n)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Error.WriteLine("Your answer is 0 but try to mantain the first argument to be greater than or equal to the second one");
-                Console.ResetColor();
-                return;
-            }
+            // if (k > n)
+            // {
+            //     Console.ForegroundColor = ConsoleColor.Red;
+            //     Console.Error.WriteLine("Your answer is 0 but try to mantain the first argument to be greater than or equal to the second one");
+            //     Console.ResetColor();
+            //     return;
+            // }
 
-            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseMemo(n, k));
-            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseUltraMemo(n, k));
-            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseDP(n, k));
-            System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.choose(n, k));
+            // System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseMemo(n, k));
+            // System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseUltraMemo(n, k));
+            // System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.chooseDP(n, k));
+            // System.Console.WriteLine("C(" + n + ", " + k + ") = " + Binomial.choose(n, k));
         }
     }
 }

@@ -8,7 +8,8 @@ namespace data_structures
     {
         public T val;
         public ListNode<T> next;
-        public ListNode(T val, ListNode<T> next = null)
+
+        public ListNode(T val, ListNode<T> next=null)
         {
             this.val = val;
             this.next = next;
