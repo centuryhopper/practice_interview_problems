@@ -1,4 +1,4 @@
-from TreeNode import TreeNode
+from data_structures.TreeNode import TreeNode
 from collections import deque
 
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     # in_order(root)
     # post_order(root)
 
-    # d = deque()
+    d = deque()
     # level_order(root, d)
-    # level_by_level(root, d)
+    level_by_level(root, d)
 
