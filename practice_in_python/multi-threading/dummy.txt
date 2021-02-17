@@ -1,0 +1,87 @@
+from threading import Thread
+from multiprocessing import Process, Pool, Value, Array, Lock
+import concurrent.futures
+from typing import Final
+import numpy as np
+import time
+import math
+
+
+UPPER_BOUND: Final = int(1e8)
+NUM_THREADS: Final = 8
+
+
+class Siever:
+
+    def SieveEmForGood(self, tup) -> None:
+
+        startInd = tup[0]
+        primes = tup[1]
+        while startInd * startInd <= UPPER_BOUND:
+            if primes[startInd]:
+                for j in range(startInd*startInd, UPPER_BOUND+1, startInd):
+                    primes[j] = False
+            startInd += 2
+
+    def count_and_add_primes(self,):
+        pass
+
+
+if __name__ == '__main__':
+
+    # starting points for the sieve, one for each thread
+    primeNums = np.array([3, 5, 7, 11, 13, 17, 31, 41])
+
+    primes = np.ones(UPPER_BOUND+1, dtype=np.bool)
+
+    # 0 and 1 are not prime numbers
+    primes[0], primes[1] = False, False
+
+    # atomic integer
+    # primeCounter = Value('i', 1)
+
+    s = Siever()
+
+    start = time.time()
+
+    # processes = [Process(target=s.SieveEmForGood, args=(primeNums[i], UPPER_BOUND, primes)) for i in range(NUM_THREADS)]
+
+
+    pool = Pool()
+    result = pool.map(s.SieveEmForGood, (primeNums, primes))
+    pool.close()
+    pool.join()
+
+    end = time.time()
+
+    print('{} ms'.format((end - start) * 1e3))
+
+    results = [2]
+    total = 2
+
+    fast_append = results.append
+    for i in range(3, UPPER_BOUND, 2):
+
+        if primes[i]:
+            fast_append(i)
+            total += i
+
+    print('total number of primes under 10^8: {}'.format(len(results)))
+    print('total sum of all primes under 10^8: {}'.format(total))
+
+    print('largest 10 primes: {}'.format(results[-10::]))
+
+    print('done')
+
+
+
+
+
+
+
+
+
+
+    pass
+
+

@@ -24,12 +24,23 @@ namespace practice_problems
         static void Main(string[] args)
         {
             p("");
-            #region
 
-            int[] a = {22, 17, 5, 2, 4, 98, 400, 20, 666, 99, 77};
-            int k = 11;
+            Stopwatch sw = new Stopwatch();
 
-            p($"{k}th largest element: " + KthLargestValue.FindKthLargest(a, k));
+            sw.Start();
+            Letter_Case_Permutation l = new Letter_Case_Permutation();
+            l.LetterCasePermutation("a1b2").ForEach(i => p(i));
+            l.LetterCasePermutation("3z4").ForEach(i => p(i));
+            l.LetterCasePermutation("12345").ForEach(i => p(i));
+            l.LetterCasePermutation("0").ForEach(i => p(i));
+            sw.Stop();
+
+            p($"time: {sw.ElapsedMilliseconds} ms");
+
+            // int[] a = {22, 17, 5, 2, 4, 98, 400, 20, 666, 99, 77};
+            // int k = 11;
+
+            // p($"{k}th largest element: " + KthLargestValue.FindKthLargest(a, k));
 
             // Array.Sort(a);
             // Array.ForEach(a,i => p(i));
@@ -123,7 +134,7 @@ namespace practice_problems
 
             // // overwrite the default compare delegate
             // pQ.compare = (a, b) => a.distance.CompareTo(b.distance);
-            #endregion
+            // #endregion
 
             #region point comparisons
 
