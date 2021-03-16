@@ -19,7 +19,6 @@ public class Primes
     // will keep track of the sum of all prime numbers between 1 and 100 million
     private static AtomicLong sum = new AtomicLong(2L);
 
-    
     private static List<Integer> primeNumbers = Collections.synchronizedList(new ArrayList<Integer>());
 
     private static void CheckThreadCompletion(Thread[] threads)
@@ -27,9 +26,18 @@ public class Primes
         boolean allThreadsAreDone = false;
         while (!allThreadsAreDone)
         {
-            for (Thread t : threads)
+            // for (var t : threads)
+            // {
+            // if (t.isAlive())
+            // {
+            // allThreadsAreDone = false;
+            // break;
+            // }
+            // allThreadsAreDone = true;
+            // }
+            for (int i = 0; i < threads.length; i++)
             {
-                if (t.isAlive())
+                if (threads[i].isAlive())
                 {
                     allThreadsAreDone = false;
                     break;
@@ -155,16 +163,61 @@ public class Primes
 
     public static void main(String[] args)
     {
-        long start = System.currentTimeMillis();
-        TheFunctionThatDoesEverything();
+        long start = System.nanoTime();
+        // TheFunctionThatDoesEverything();
+        int n = (int) 1e8;
+        int sqrtn = (int) 1e4;
+        boolean[] primeArray = new boolean[n + 1];
+        Arrays.fill(primeArray, true);
 
-        System.out.println(cnt);
-        System.out.println(sum);
+        for (int i = 2; i <= sqrtn; i++)
+            if (primeArray[i] == true)
+                for (int j = i * i; j <= n; j += i)
+                    primeArray[j] = false;
 
-        Collections.sort(primeNumbers);
-        primeNumbers.subList(primeNumbers.size() - 10, primeNumbers.size()).forEach(i -> System.out.print(i + " "));
-        System.out.println();
-        System.out.println("Total runtime (in milliseconds): " + (System.currentTimeMillis() - start));
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(2);
+        Long sum = 2L;
+        // for (int i = 3; i < n; i += 2)
+        // {
+        // if (primeArray[i])
+        // {
+        // arrayList.add(i);
+        // sum += i;
+        // }
+        // }
+
+        int numPrimeFound = 0;
+        long sumOfPrimes = 0;
+
+        for (int i = 2; i <= n; i++)
+        {
+            if (primeArray[i] == true)
+            {
+                numPrimeFound++;
+                sumOfPrimes += i;
+            }
+        }
+
+        double totalTime = (System.nanoTime() - start) / 1_000_000_000.0;
+        System.out.printf("<%f Seconds> <%d Number of Primes Found> <%d Sum of All Primes Found>\n", totalTime,
+                numPrimeFound, sumOfPrimes);
+
+        // int len = arrayList.size();
+        // System.out.println("total sum: " + sum);
+        // System.out.println("number of primes: " + len);
+        // System.out.println("ten largest primes: " + arrayList.subList(len - 10,
+        // len));
+
+        // System.out.println(cnt);
+        // System.out.println(sum);
+
+        // Collections.sort(primeNumbers);
+        // primeNumbers.subList(primeNumbers.size() - 10, primeNumbers.size()).forEach(i
+        // -> System.out.print(i + " "));
+        // System.out.println();
+        // System.out.println("Total runtime (in milliseconds): " +
+        // (System.currentTimeMillis() - start));
     }
 }
 
@@ -180,7 +233,8 @@ class UseSieves implements Runnable
         this.primes = primes;
     }
 
-    public synchronized void SieveEmForGood()
+    // todo synchronized use to be here
+    public void SieveEmForGood()
     {
         // caching should increase efficiency rather than repeatedly
         // making the function call
@@ -189,7 +243,7 @@ class UseSieves implements Runnable
         {
             if (primes[i])
             {
-                for (int j = i * i; j < endInd; j += i)
+                for (int j = i * i; j < endInd; j += 2 * i)
                 {
                     primes[j] = false;
                 }
