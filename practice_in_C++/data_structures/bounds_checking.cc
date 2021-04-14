@@ -26,10 +26,6 @@ public:
 
 int main()
 {
-//   std::string name;
-//   std::cout << "What is your name? ";
-//   getline (std::cin, name);
-//   std::cout << "Hello, " << name << "!\n";
 
     int a[] = {1,2,3};
     int size = sizeof(a) / sizeof(int);

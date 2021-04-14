@@ -118,6 +118,7 @@ namespace PathFinding
 
                     // todo "matrix[v.id][i] > 0" will be used to check for neighboring nodes, positive means
                     // there is an edge, negative means there's not direct edge
+                    // dijkstra's algorithm may or may not work properly on graphs with negative edge weights
                     if (matrix[v.id, i] > 0 && !visited[i] && dist[v.id] + matrix[v.id, i] < dist[i])
                     {
                         // This is a bit lazy. A vertex might be thrown into the

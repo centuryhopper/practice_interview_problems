@@ -23,19 +23,19 @@ namespace practice_problems
 
         static void Main(string[] args)
         {
-            p("");
+            // p("");
 
-            Stopwatch sw = new Stopwatch();
+            // Stopwatch sw = new Stopwatch();
 
-            sw.Start();
-            Letter_Case_Permutation l = new Letter_Case_Permutation();
-            l.LetterCasePermutation("a1b2").ForEach(i => p(i));
-            l.LetterCasePermutation("3z4").ForEach(i => p(i));
-            l.LetterCasePermutation("12345").ForEach(i => p(i));
-            l.LetterCasePermutation("0").ForEach(i => p(i));
-            sw.Stop();
+            // sw.Start();
+            // Letter_Case_Permutation l = new Letter_Case_Permutation();
+            // l.LetterCasePermutation("a1b2").ForEach(i => p(i));
+            // l.LetterCasePermutation("3z4").ForEach(i => p(i));
+            // l.LetterCasePermutation("12345").ForEach(i => p(i));
+            // l.LetterCasePermutation("0").ForEach(i => p(i));
+            // sw.Stop();
 
-            p($"time: {sw.ElapsedMilliseconds} ms");
+            // p($"time: {sw.ElapsedMilliseconds} ms");
 
             // int[] a = {22, 17, 5, 2, 4, 98, 400, 20, 666, 99, 77};
             // int k = 11;
@@ -69,8 +69,8 @@ namespace practice_problems
 
             // this object assumes the first line in the text file
             // is a single integer that represents the total number of vertices
-            // DijkstraAlgo d = new DijkstraAlgo("dijkstra-graph.txt");
-            // d.RunDijkstra(0);
+            DijkstraAlgo d = new DijkstraAlgo("./algos/dijkstra-graph.txt");
+            d.RunDijkstra(0);
 
             // Trie t = new Trie();
 

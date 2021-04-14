@@ -13,6 +13,21 @@
 #define fl(i, k, n) for (int i = k; i < n; ++i)
 using namespace std;
 
+// #include <numeric>
+// #include <vector>
+// #include <string>
+// #include <iostream>
+
+// #define acc std::accumulate
+// #define all(x) x.begin(), x.end()
+
+// int main () {
+//     std::string str = "Hello World!";
+//     std::vector<std::string> vec(1,str);
+//     std::string a = acc(all(vec), std::string(""));
+//     std::cout << a << std::endl;
+// }
+
 
 // g++ –std=c++17 [filename].cpp && ./a.out (type '–std=c++17' out manually. Don't copy
 // & paste because the copy & pasted hyphen isn't recognized)
