@@ -19,8 +19,7 @@ public:
     ListNode* partition(ListNode* head, int x)
     {
         ListNode* a = new ListNode(), *b = new ListNode();
-        auto tmp = head;
-        auto aApp = a, bApp = b;
+        auto tmp = head, aApp = a, bApp = b;
         while (tmp)
         {
             int val = tmp->val;
