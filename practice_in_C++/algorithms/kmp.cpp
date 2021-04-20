@@ -50,13 +50,9 @@ void lps_preprocess(const std::string& pat, int* lps)
         {
             // map i back to the value at its previous index
             if (i != 0)
-            {
                 i = lps[i - 1];
-            }
             else
-            {
                 lps[j++] = 0;
-            }
         }
         // match
         else
