@@ -18,7 +18,6 @@ int bin_search(int* array, int n, int targetVal)
     return recursive_binary_search(array, targetVal, 0, n-1);
 }
 
-
 int main(int argc, char const *argv[])
 {
     int ar[] = {6,7,8,10,46,75,7,9,5,4};

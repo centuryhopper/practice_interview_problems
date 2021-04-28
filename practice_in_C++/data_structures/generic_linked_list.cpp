@@ -31,7 +31,7 @@ public:
     // keep track of list size for debugging purposes
     int size() { return len; }
 
-    // recursively clean up list
+    // recursively cleans up list
     void destroyList(Node* h)
     {
         if (!h) return;
