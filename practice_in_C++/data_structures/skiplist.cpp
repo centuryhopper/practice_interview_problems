@@ -58,9 +58,10 @@ private:
     }
 
     // all existing nodes are guaranteed to have a reference at level 0
-    void destroy(Node* h)
+    void destroy(Node *h)
     {
-        if (!h) return;
+        if (!h)
+            return;
         destroy(h->next(0));
         delete h;
     }
@@ -68,16 +69,22 @@ private:
 public:
     // start at the top and go down if needed
     Skiplist() : head(new Node(1, INT_MIN))
-    {}
+    {
+    }
 
-    ~Skiplist() { printf("skiplist destroyed\n"); destroy(this->head); }
+    ~Skiplist()
+    {
+        printf("skiplist destroyed\n");
+        destroy(this->head);
+    }
 
-
+    // return the number of elements in the skiplist
     int size() { return this->listSize; }
 
     // debugging
     void print()
     {
+        cout << "height of skiplist: " << head->levels() << endl;
         auto tmp = head;
         int ht = head->levels() - 1;
         while (ht >= 0)
@@ -89,9 +96,21 @@ public:
             }
             // set tmp back to head for the next level below
             tmp = head;
-            cout<<endl;
+            cout << endl;
             --ht;
         }
+    }
+
+    void printFirstLevel()
+    {
+        cout << "height of skiplist: " << head->levels() << endl;
+        auto tmp = head;
+        while (tmp)
+        {
+            cout << tmp->value() << ", ";
+            tmp = tmp->next(0);
+        }
+        cout << endl;
     }
 
     bool search(int target)
@@ -208,20 +227,30 @@ int main(int argc, char const *argv[])
 {
     std::cout << std::boolalpha << std::endl;
     srand(time(NULL));
-    Skiplist s;
-    s.add(1);
-    s.add(2);
-    s.add(3);
-    std::cout << s.search(0) << std::endl;
-    s.add(4);
-    s.print();
-    nl;
-    std::cout << s.search(1) << std::endl;
-    std::cout << s.erase(0) << std::endl;
-    std::cout << s.erase(1) << std::endl;
-    std::cout << s.search(1) << std::endl;
-    s.print();
 
+    Skiplist s;
+
+    clock_t t = clock();
+    for (int i = 0; i < 100; ++i)
+        s.add(i);
+
+    // s.add(1);
+    // s.add(2);
+    // s.add(3);
+    // std::cout << s.search(0) << std::endl;
+    // s.add(4);
+    // s.print();
+    // nl;
+    // std::cout << s.search(1) << std::endl;
+    // std::cout << s.erase(0) << std::endl;
+    // std::cout << s.erase(1) << std::endl;
+    // std::cout << s.search(1) << std::endl;
+    // std::cout << s.size() << std::endl;
+    // std::cout << s.erase(6) << std::endl;
+    s.printFirstLevel();
+    t = clock() - t;
+
+    printf("It took me %d clicks (%f seconds).\n", t, ((float)t) / CLOCKS_PER_SEC);
 
     return 0;
 }
