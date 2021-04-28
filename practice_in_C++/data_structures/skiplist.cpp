@@ -142,25 +142,29 @@ public:
     // duplicates will be inserted before instead of after
     void add(int num)
     {
-        int randHt = getRandomHeight();
-        auto node = new Node(randHt, num);
-        while (head->levels() < randHt)
+        int newNodeHt = getRandomHeight();
+        auto node = new Node(newNodeHt, num);
+        while (head->levels() < newNodeHt)
             head->addHeight();
 
         auto tmp = head;
 
         // traverse the height of our new node
-        int htIdx = randHt - 1;
+        int htIdx = tmp->levels() - 1;
         while (htIdx >= 0)
         {
             // move down if next pointer is null or the value at next pointer is greater than or equal to target
             if (!tmp->next(htIdx) || tmp->next(htIdx)->value() >= num)
             {
-                // we know for sure that this node's next must point to the new node
-                // because we're traversing from the height of our new node
-                Node *t = tmp->next(htIdx);
-                tmp->setNext(htIdx, node);
-                node->setNext(htIdx, t);
+                // can't start linking until we're at most as tall as the height of the new node
+                if (htIdx < newNodeHt)
+                {
+                    // we know for sure that this node's next must point to the new node
+                    // because we're traversing from the height of our new node
+                    Node *t = tmp->next(htIdx);
+                    tmp->setNext(htIdx, node);
+                    node->setNext(htIdx, t);
+                }
 
                 // drop down a level
                 htIdx--;
@@ -232,7 +236,7 @@ int main(int argc, char const *argv[])
 
     clock_t t = clock();
     for (int i = 0; i < 100; ++i)
-        s.add(i);
+        s.add((rand() % 101) + 1);
 
     // s.add(1);
     // s.add(2);
@@ -244,7 +248,7 @@ int main(int argc, char const *argv[])
     // std::cout << s.search(1) << std::endl;
     // std::cout << s.erase(0) << std::endl;
     // std::cout << s.erase(1) << std::endl;
-    // std::cout << s.search(1) << std::endl;
+    std::cout << s.search(99) << std::endl;
     // std::cout << s.size() << std::endl;
     // std::cout << s.erase(6) << std::endl;
     s.printFirstLevel();
