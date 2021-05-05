@@ -53,11 +53,11 @@ int main(void)
     // the_mule owns the Foundation
 
     // the square brackets initializes all values to 0
-    int test[5]={};
-    memset(test,-1,sizeof(test));
-    for (int i = 0; i < 5; ++i)
-        cout<<test[i]<<' ';
-    nl;
+    // int test[5]={};
+    // memset(test,-1,sizeof(test));
+    // for (int i = 0; i < 5; ++i)
+    //     cout<<test[i]<<' ';
+    // nl;
 
 #pragma region
 // int ar[] = {1,2,3};
@@ -101,6 +101,24 @@ int main(void)
 // auto b = add(1L, 2L, 3L);
 // auto c = add(1.F, 2.F, 3.F);
 #pragma endregion
+
+    int test[5][5];
+    // memset(test, 0, sizeof(test));
+
+    int cnt = 0;
+    for (int i = 0; i < 5; ++i)
+    {
+        std::iota(test[i], test[i]+5, cnt);
+        for (int j = 0; j < 5; ++j)
+        {
+            // cout<<i<<'|'<<j<<", ";
+            cout<<test[i][j]<<", ";
+        }
+        cnt += 5;
+        printf("\n");
+    }
+
+
 
         return 0;
 }

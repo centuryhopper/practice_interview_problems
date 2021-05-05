@@ -11,7 +11,7 @@ private:
     {
         int val;
         Node* next;
-        Node(int i=-1) : val(i)
+        Node(int i=-1) : val(i), next(NULL)
         {}
     };
 
@@ -55,21 +55,21 @@ public:
     /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
     int get(int index)
     {
-        int cnt = 0;
+        if (index >= len || index < 0) return -1;
+        int ith = 0;
         auto tmp = head;
 
         // traverse thru list just like you would for an array
         while (tmp)
         {
-            if (cnt == index)
+            if (ith == index)
             {
                 return tmp->val;
             }
             tmp=tmp->next;
-            ++cnt;
+            ++ith;
         }
 
-        // index >= size of list or index < 0, so return -1
         return -1;
     }
 
