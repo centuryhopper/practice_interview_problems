@@ -23,6 +23,7 @@ using namespace std;
 #define S second
 #define clr(x) memset(x, 0, sizeof(x))
 #define tr(it, a) for (auto it = a.begin(); it != a.end(); it++)
+#define ts to_string
 #define all(x) x.begin(), x.end()
 #define sortall(x) sort(all(x))
 #define p(v) for_each(all(v), [](auto e) { cout<<e<<" "; })
@@ -36,6 +37,7 @@ typedef vector<pii> vpii;
 typedef vector<pl> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
+typedef unordered_map<int,int> umii;
 mt19937_64 rang(chrono::high_resolution_clock::now().time_since_epoch().count());
 int rng(int lim)
 {
