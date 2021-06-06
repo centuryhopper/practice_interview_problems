@@ -87,24 +87,16 @@ void studentGrowStack(struct Stack *s, int increase)
     // free(s->array);
     // s->array = new_location;
 
-    int *temp = (int*) malloc((s->top) * sizeof(int));
+    int *temparray = (int *)malloc(sizeof(int) * (s->capacity + increase));
 
     for (int i = 0; i < s->top; i++)
     {
-        temp[i] = s->array[i];
+        temparray[i] = s->array[i];
     }
 
-    s->capacity = s->capacity + increase;
+    s->capacity += increase;
     free(s->array);
-
-    s->array = (int*) malloc((s->capacity) * sizeof(int));
-
-    for (int i = 0; i < s->top; i++)
-    {
-        s->array[i] = temp[i];
-    }
-
-    free(temp);
+    s->array = temparray;
 }
 
 int main(int argc, char const *argv[])

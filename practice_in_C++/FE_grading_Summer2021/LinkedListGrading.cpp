@@ -106,18 +106,26 @@ struct node *makeCirclular(struct node *head)
 
 struct node *studentMakeCirclular(struct node *head)
 {
-
     if (head == NULL)
     {
-        return head;
+        return NULL;
     }
-    else
-    {
-        node *tail = studentMakeCirclular(head->next);
-        tail->next = head;
 
+    if (head->next == NULL)
+    {
+        head->next = head;
         return head;
     }
+
+    struct node *tmp = head->next;
+    while (tmp->next != NULL)
+    {
+        tmp = tmp->next;
+    }
+
+    tmp->next = head;
+
+    return head;
 }
 
 int main(int argc, char const *argv[])
