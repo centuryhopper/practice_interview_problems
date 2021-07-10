@@ -1,20 +1,41 @@
 from data_structures import ListNode
+
+#region most recent solution
 class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
-        dummy_head = ListNode()
-        dummy_head.next = head
-        tmp, delayedTmp = head, head
-        pred = dummy_head
+        # get length of list
+        tmp = head
+        cnt = 0
         while tmp:
-            # print(n)
-            if n <= 0:
-                pred = delayedTmp
-                # print(delayedTmp.val)
-                delayedTmp = delayedTmp.next
+            cnt+=1
+            tmp=tmp.next
+        if cnt == 1: return None
+        desiredDist = cnt - n - 1
+        if desiredDist < 0: return head.next
+        tmp = head
+        for _ in range(desiredDist):
             tmp = tmp.next
-            n-=1
-        pred.next = delayedTmp.next
-        return dummy_head.next
+        tmp.next = tmp.next.next
+        return head
+#endregion
+
+
+# class Solution:
+#     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+#         dummy_head = ListNode()
+#         dummy_head.next = head
+#         tmp, delayedTmp = head, head
+#         pred = dummy_head
+#         while tmp:
+#             # print(n)
+#             if n <= 0:
+#                 pred = delayedTmp
+#                 # print(delayedTmp.val)
+#                 delayedTmp = delayedTmp.next
+#             tmp = tmp.next
+#             n-=1
+#         pred.next = delayedTmp.next
+#         return dummy_head.next
 
 
 
