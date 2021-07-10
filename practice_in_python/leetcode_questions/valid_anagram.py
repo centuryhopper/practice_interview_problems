@@ -54,3 +54,8 @@ def isAnagramOptimized(s: str, t: str) -> bool:
 
 if __name__ == '__main__':
     print(isAnagramOptimized('leo', 'loe'))
+
+
+#region JS solution
+# https://leetcode.com/problems/valid-anagram/discuss/163488/XOR-%2B-hash
+#endregion
