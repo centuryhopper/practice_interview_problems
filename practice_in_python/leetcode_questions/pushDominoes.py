@@ -50,6 +50,6 @@ class Solution:
                 # isn't an R (so left bound must be an L in this case i.e. L...L etc)
                 elif cntDots > 0 and lst[j] != 'R':
                     for x in range(j,i):
-                        lst[x] = 'L'        
+                        lst[x] = 'L'
         return ''.join(lst)
 #endregion
