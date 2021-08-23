@@ -2,7 +2,7 @@
 
 # my solutions
 class Solution:
-    def stoneGameVII(self, stones: List[int]) -> int:
+    def stoneGameVII(self, stones: list[int]) -> int:
         def rec(stones, curSum, aliceTurn, i, j, aSum, bSum) -> int:
             # game is over
             if i > j:
