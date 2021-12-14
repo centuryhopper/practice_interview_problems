@@ -1,4 +1,7 @@
 class Solution:
+    '''
+    Boyer-Moore algorithm
+    '''
     def majorityElement(self, nums: List[int]) -> int:
         # nums.sort()
         candidate = nums[0]
