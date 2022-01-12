@@ -1,0 +1,16 @@
+
+https://www.youtube.com/watch?v=wGXB9OWhPTg&t=4s
+cur = root
+while cur is not null:
+    if not exists cur.left:
+        print(cur)
+        cur = cur.right
+    else:
+        predecessor = findPredecessor(cur)
+        if not exists predecessor.right:
+            predecessor.right = cur
+            cur = cur.left
+        else:
+            predecessor.right = null
+            print(cur)
+            cur = cur.right
