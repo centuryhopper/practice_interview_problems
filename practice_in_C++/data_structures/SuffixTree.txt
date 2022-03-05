@@ -1,0 +1,7 @@
+
+three rules:
+    1: if a new character, c, is found, then we must append c to all paths from root to c (leaf nodes)
+    2: if a new character, c, is found, then just append c to root if there are no paths from root to c (leaf nodes)
+    3: if a character, c, is present directly from the root, dont do anything, increment active length by 1. Go to next phase even if remaining is not 0
+
+
