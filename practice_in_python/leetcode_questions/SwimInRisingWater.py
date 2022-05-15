@@ -1,5 +1,6 @@
 from heapq import heappush, heappop, heapify
 
+from typing import List
 
 class Solution:
     # time: O(n^2 log n) because we could in the worst case traverse the entire grid if it's sorted
