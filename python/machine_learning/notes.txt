@@ -1,0 +1,20 @@
+kaggle notes
+
+models (best model should have the lowest mean absolute error)
+decision trees
+random forest (https://www.kaggle.com/code/dansbecker/random-forests/tutorial)
+xg boost (https://www.kaggle.com/code/alexisbcook/xgboost/tutorial)
+
+
+techniques:
+missing value handling (https://www.kaggle.com/code/alexisbcook/missing-values/tutorial)
+categorical variables (https://www.kaggle.com/code/alexisbcook/categorical-variables/tutorial)
+designing pipelines (https://www.kaggle.com/code/alexisbcook/pipelines/tutorial)
+cross validation (https://www.kaggle.com/code/alexisbcook/cross-validation/tutorial)
+avoiding leakage (https://www.kaggle.com/code/alexisbcook/data-leakage/tutorial)
+avoiding overfitting, underfitting (https://www.kaggle.com/code/dansbecker/underfitting-and-overfitting/tutorial)
+model validation (https://www.kaggle.com/code/dansbecker/model-validation/tutorial)
+
+
+
+
