@@ -10,7 +10,7 @@ class kmp:
         # lps array the size of the pattern
         lpsArray = [0 for _ in range(m)]
         self.__preprocessLPSArray(pat, lpsArray)
-        print(lpsArray)
+        # print(lpsArray)
 
         # i will scan thru the text string
         # j will scan thru the pattern string
@@ -70,11 +70,13 @@ if __name__ == '__main__':
     # p = 'ababd'
     t = 'The world is completely devastated with the amid breakout of coronavirus'
     p = 'coronavirus'
-    start = time.time()
+    t = 'abcxabcabcabbabbaaaabxabcabcabcabbbaababcabaa'
+    p = 'abcabc'
+    start = time.perf_counter()
     print(o.kmpSearch(t, p))
-    end = time.time()
+    end = time.perf_counter()
     print(f'kmp took {(end - start) * 1000} ms')
-    start = time.time()
-    print(t.find(p)+1)
-    end = time.time()
+    start = time.perf_counter()
+    print(t.find(p))
+    end = time.perf_counter()
     print(f'python built-in index method took {(end - start) * 1000} ms')
