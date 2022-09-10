@@ -1,5 +1,5 @@
 
-derived from: https://github.com/mission-peace/interview/blob/master/src/com/interview/string/ZAlgorithm.java
+# derived from: https://github.com/mission-peace/interview/blob/master/src/com/interview/string/ZAlgorithm.java
 
 from typing import List
 import time
