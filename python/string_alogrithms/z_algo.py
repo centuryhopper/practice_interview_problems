@@ -20,9 +20,14 @@ class ZAlgo:
                 # is currently at the position where the comparison had a mismatch, so by doing so, we bring the right pointer back to the latest matching comparison
                 right-=1
             else:
-                k1 = k - left
-                if z[k1] < right - k + 1:
-                    z[k] = z[k1]
+                # we are operating inside the z box (right - left)
+                distBetweenKandLeft = k - left
+                # check whether our comparison value stretches past the right bound
+
+                # does not stretch past
+                if z[distBetweenKandLeft] + k <= right:
+                    z[k] = z[distBetweenKandLeft]
+                # does stretch past, so we check for more matches
                 else:
                     left = k
                     while right < len(s) and s[right] == s[right - left]:
