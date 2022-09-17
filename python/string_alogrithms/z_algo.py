@@ -30,7 +30,7 @@ class ZAlgo:
                 # does stretch past, so we check for more matches
                 else:
                     left = k
-                    while right < len(s) and s[right] == s[right - left]:
+                    while right < n and s[right] == s[right - left]:
                         right+=1
                     z[k] = right - left
                     right-=1
@@ -41,6 +41,7 @@ class ZAlgo:
         newStr = f'{pattern}${text}'
         res = []
         z = ZAlgo.calculateZ(newStr)
+        print(f'size: {len(z)}, {z = }')
         n = len(z)
         p = len(pattern)
         # get all values where they match the size of pattern
@@ -52,6 +53,13 @@ class ZAlgo:
 if __name__ == '__main__':
     text = "aaabcxyzaaaabczaaczabbaaaaaabc"
     pattern = "aaabc"
+    start = time.perf_counter()
+    res = ZAlgo.matchPattern(text,pattern)
+    print(f'z algorithm time in ms: {(time.perf_counter() - start) * 1000}')
+    print(res)
+
+    text = "aabcaabxaaz"
+    pattern = "aab"
     start = time.perf_counter()
     res = ZAlgo.matchPattern(text,pattern)
     print(f'z algorithm time in ms: {(time.perf_counter() - start) * 1000}')
