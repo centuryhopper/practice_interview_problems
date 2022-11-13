@@ -40,7 +40,7 @@ def rabinKarp(text, pat):
 
     return ans
 
-# print(rabinKarp(sys.argv[1],sys.argv[2]))
+print(rabinKarp(sys.argv[1],sys.argv[2]))
 # index = rabinKarp("TusharRoy", "sharRoy")
 # print("Index ", index)
 # index = rabinKarp("TusharRoy", "Roy")
