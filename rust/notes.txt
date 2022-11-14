@@ -1,0 +1,4 @@
+
+Any heap allocated variable can have only 1 mutable borrow or any number of immutable borrows but not both at the same time.
+
+
