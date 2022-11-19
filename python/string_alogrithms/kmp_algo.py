@@ -22,6 +22,7 @@ class kmp:
             # if j traverses the whole pattern string,
             # then we've found a match at index i
             if j == m:
+                # append the index of the first character of the pattern found in text
                 matchIndices.append(i-j)
 
                 # todo why this line???
