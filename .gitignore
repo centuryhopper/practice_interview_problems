@@ -17,3 +17,5 @@ Cargo.lock
 
 .vscode
 .vs
+
+node_modules/
